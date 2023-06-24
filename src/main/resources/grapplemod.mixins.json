@@ -1,7 +1,7 @@
 {
     "required": true,
     "minVersion": "0.8",
-    "package": "com.yyon.grapplinghook.mixin",
+    "package": "me.cg360.mod.grapple.mixin",
     "compatibilityLevel": "JAVA_17",
     "mixins": [
         "BasePlayerDamageHandlerMixin",
@@ -13,16 +13,6 @@
         "ServerPlayerDeathHandlerMixin",
         "ServerStartMixin",
         "CreativeTabForceUpdateMixin"
-    ],
-    "client": [
-      "client.BlockBreakDetectorMixin",
-      "client.CameraSetupHookMixin",
-      "client.ClientHookMixin",
-      "client.GrappleCrosshairMixin",
-      "client.KeybindingHandlerMixin",
-      "client.MovementInputHandlerMixin",
-      "client.NonConflictingKeyBindingMixin",
-      "client.attachable.LayerDefinitionsMixin"
     ],
     "injectors": {
         "defaultRequire": 1

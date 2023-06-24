@@ -7,24 +7,28 @@
   "authors": ["Yyon", "Nyfaria", "Mayesnake", "CG360"],
   "contact": {},
   "license": "GPL-3.0",
-  "icon": "assets/grapplemod/icon.png",
+  "icon": "icon.png",
   "environment": "*",
   "entrypoints": {
-    "client": [ "com.yyon.grapplinghook.client.GrappleModClient" ],
-    "main": [ "com.yyon.grapplinghook.GrappleMod" ],
-    "modmenu": [
-      "com.yyon.grapplinghook.client.integration.ModMenuIntegration"
-    ]
+      "main": ["me.cg360.mod.grapple.GrappleMod"],
+      "client": ["me.cg360.mod.grapple.client.GrappleModClient"],
+      "modmenu": ["me.cg360.mod.grapple.client.integration.ModMenuIntegration"]
   },
-  "mixins": [ "grapplemod.mixins.json" ],
+  "mixins": [
+      "grapplemod.mixins.json",
+      {
+          "environment": "client",
+          "config": "grapplemod-client.mixins.json"
+      }
+  ],
   "accessWidener": "grapplemod.accesswidener",
   "depends": {
-    "fabricloader": ">=${loader_version}",
-    "fabric": "*",
-    "minecraft": "${minecraft_version_long}",
-    "cloth-config": ">=${clothconfig_version}"
+      "fabricloader": ">=${loader_version}",
+      "fabric": "*",
+      "minecraft": "${minecraft_version_long}",
+      "cloth-config": ">=${clothconfig_version}"
   },
   "recommends": {
-    "modmenu": ">=${modmenu_version}"
+      "modmenu": ">=${modmenu_version}"
   }
 }

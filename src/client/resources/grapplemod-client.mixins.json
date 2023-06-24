@@ -1,0 +1,18 @@
+{
+    "required": true,
+    "minVersion": "0.8",
+    "package": "me.cg360.mod.grapple.client.mixin",
+    "compatibilityLevel": "JAVA_17",
+    "client": [
+        "BlockBreakDetectorMixin",
+        "CameraSetupHookMixin",
+        "ClientHookMixin",
+        "GrappleCrosshairMixin",
+        "KeybindingHandlerMixin",
+        "MovementInputHandlerMixin",
+        "NonConflictingKeyBindingMixin"
+    ],
+    "injectors": {
+        "defaultRequire": 1
+    }
+}

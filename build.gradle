@@ -13,12 +13,23 @@ project.setVersion(project.properties["minecraft_version"] + targetVersion)
 loom {
     accessWidenerPath = file("src/main/resources/grapplemod.accesswidener")
 
+    splitEnvironmentSourceSets()
+
+    mods {
+        grapplemod {
+            sourceSet sourceSets.main
+            sourceSet sourceSets.client
+        }
+    }
+
     runs {
-        client {
+        named("client") {
+            client()
             runDir "run/client"
         }
 
-        server {
+        named("server") {
+            server()
             runDir "run/server"
         }
     }
@@ -39,6 +50,9 @@ repositories {
 
 dependencies {
     minecraft "com.mojang:minecraft:${project.minecraft_version}"
+
+
+
     mappings loom.layered() {
         officialMojangMappings()
 
