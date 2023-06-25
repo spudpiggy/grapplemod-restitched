@@ -2,7 +2,7 @@ package me.cg360.mod.grapple.content.entity.grapplinghook;
 
 import me.cg360.mod.grapple.GrappleMod;
 import me.cg360.mod.grapple.network.NetworkManager;
-import me.cg360.mod.grapple.network.clientbound.SegmentMessage;
+import me.cg360.mod.grapple.network.serialize.clientbound.SegmentMessage;
 import me.cg360.mod.grapple.util.GrappleModUtils;
 import me.cg360.mod.grapple.util.Vec;
 import net.minecraft.core.BlockPos;

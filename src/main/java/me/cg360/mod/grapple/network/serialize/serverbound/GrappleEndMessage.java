@@ -1,7 +1,8 @@
-package me.cg360.mod.grapple.network.serverbound;
+package me.cg360.mod.grapple.network.serialize.serverbound;
 
 import me.cg360.mod.grapple.GrappleMod;
 import me.cg360.mod.grapple.network.NetworkContext;
+import me.cg360.mod.grapple.network.serialize.SerializablePacket;
 import me.cg360.mod.grapple.physics.PhysicsContextTracker;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.resources.ResourceLocation;
@@ -26,7 +27,7 @@ import java.util.HashSet;
     along with GrappleMod.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-public class GrappleEndMessage extends BaseMessageServer {
+public class GrappleEndMessage extends SerializablePacket {
    
 	public int entityId;
 	public HashSet<Integer> hookEntityIds;

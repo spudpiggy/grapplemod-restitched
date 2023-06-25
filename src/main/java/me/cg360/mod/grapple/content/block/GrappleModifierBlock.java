@@ -1,4 +1,4 @@
-package me.cg360.mod.grapple.content.block.modifierblock;
+package me.cg360.mod.grapple.content.block;
 
 import me.cg360.mod.grapple.content.blockentity.GrappleModifierBlockEntity;
 import me.cg360.mod.grapple.config.GrappleModLegacyConfig;
@@ -80,10 +80,10 @@ public class GrappleModifierBlock extends BaseEntityBlock {
 		ItemStack helditemstack = playerIn.getItemInHand(hand);
 		Item helditem = helditemstack.getItem();
 
-		if (helditem instanceof BaseUpgradeItem upgradeItem) {
-			if (worldIn.isClientSide)
-				return InteractionResult.PASS;
+		if (worldIn.isClientSide)
+			return InteractionResult.SUCCESS;
 
+		if (helditem instanceof BaseUpgradeItem upgradeItem) {
 			BlockEntity ent = worldIn.getBlockEntity(pos);
 			GrappleModifierBlockEntity tile = (GrappleModifierBlockEntity) ent;
 
@@ -108,9 +108,6 @@ public class GrappleModifierBlock extends BaseEntityBlock {
 
 
 		} else if (helditem instanceof GrapplehookItem) {
-			if (worldIn.isClientSide)
-				return InteractionResult.PASS;
-
 			BlockEntity ent = worldIn.getBlockEntity(pos);
 			GrappleModifierBlockEntity tile = (GrappleModifierBlockEntity) ent;
 
@@ -123,13 +120,10 @@ public class GrappleModifierBlock extends BaseEntityBlock {
 			playerIn.sendSystemMessage(Component.literal("Applied configuration"));
 
 		} else if (helditem == Items.DIAMOND_BOOTS) {
-			if (worldIn.isClientSide) {
+			if (!GrappleModLegacyConfig.getConf().longfallboots.longfallbootsrecipe) {
 				playerIn.sendSystemMessage(Component.literal("You are not permitted to make Long Fall Boots here.").withStyle(ChatFormatting.RED));
-				return InteractionResult.PASS;
-			}
-
-			if (!GrappleModLegacyConfig.getConf().longfallboots.longfallbootsrecipe)
 				return InteractionResult.SUCCESS;
+			}
 
 			boolean gaveitem = false;
 
@@ -137,6 +131,7 @@ public class GrappleModifierBlock extends BaseEntityBlock {
 				return InteractionResult.FAIL;
 
 			Map<Enchantment, Integer> enchantments = EnchantmentHelper.getEnchantments(helditemstack);
+
 			if (enchantments.getOrDefault(Enchantments.FALL_PROTECTION, -1) >= 4) {
 				ItemStack newitemstack = new ItemStack(GrappleModItems.LONG_FALL_BOOTS.get());
 				EnchantmentHelper.setEnchantments(enchantments, newitemstack);
@@ -144,26 +139,25 @@ public class GrappleModifierBlock extends BaseEntityBlock {
 				gaveitem = true;
 			}
 
-
 			if (!gaveitem) {
 				playerIn.sendSystemMessage(Component.literal("Right click with diamond boots enchanted with feather falling IV to get long fall boots"));
 			}
-
 
 		} else if (helditem == Items.DIAMOND) {
 			this.easterEgg(worldIn, pos, playerIn);
 
 		} else {
-			if ((!worldIn.isClientSide) || hand != InteractionHand.MAIN_HAND)
+			if (hand != InteractionHand.MAIN_HAND) {
 				return InteractionResult.PASS;
+			}
 
 			BlockEntity ent = worldIn.getBlockEntity(pos);
 			GrappleModifierBlockEntity tile = (GrappleModifierBlockEntity) ent;
 
-			GrappleModClient.get().openModifierScreen(tile);
+			playerIn.openMenu(tile);
 		}
 
-		return InteractionResult.SUCCESS;
+		return InteractionResult.CONSUME;
 	}
     
     @Override

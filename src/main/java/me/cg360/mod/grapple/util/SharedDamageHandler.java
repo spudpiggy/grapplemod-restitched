@@ -3,7 +3,7 @@ package me.cg360.mod.grapple.util;
 import me.cg360.mod.grapple.content.entity.grapplinghook.GrapplinghookEntity;
 import me.cg360.mod.grapple.content.item.GrapplehookItem;
 import me.cg360.mod.grapple.content.item.LongFallBootsItem;
-import me.cg360.mod.grapple.network.clientbound.GrappleDetachMessage;
+import me.cg360.mod.grapple.network.serialize.clientbound.GrappleDetachMessage;
 import me.cg360.mod.grapple.physics.PhysicsContextTracker;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.damagesource.DamageTypes;

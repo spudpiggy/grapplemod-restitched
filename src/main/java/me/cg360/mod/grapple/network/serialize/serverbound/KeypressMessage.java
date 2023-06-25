@@ -1,8 +1,9 @@
-package me.cg360.mod.grapple.network.serverbound;
+package me.cg360.mod.grapple.network.serialize.serverbound;
 
 import me.cg360.mod.grapple.GrappleMod;
 import me.cg360.mod.grapple.content.item.type.KeypressItem;
 import me.cg360.mod.grapple.network.NetworkContext;
+import me.cg360.mod.grapple.network.serialize.SerializablePacket;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerPlayer;
@@ -26,7 +27,7 @@ import net.minecraft.world.item.ItemStack;
     along with GrappleMod.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-public class KeypressMessage extends BaseMessageServer {
+public class KeypressMessage extends SerializablePacket {
 	
 	KeypressItem.Keys key;
 	boolean isDown;

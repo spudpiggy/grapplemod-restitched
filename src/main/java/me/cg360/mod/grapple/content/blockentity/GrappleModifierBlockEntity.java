@@ -3,7 +3,7 @@ package me.cg360.mod.grapple.content.blockentity;
 import me.cg360.mod.grapple.content.registry.GrappleModMetaRegistry;
 import me.cg360.mod.grapple.customization.CustomizationCategory;
 import me.cg360.mod.grapple.network.NetworkManager;
-import me.cg360.mod.grapple.network.serverbound.GrappleModifierMessage;
+import me.cg360.mod.grapple.network.serialize.serverbound.GrappleModifierMessage;
 import me.cg360.mod.grapple.content.registry.GrappleModBlockEntities;
 import me.cg360.mod.grapple.customization.CustomizationVolume;
 import net.minecraft.core.BlockPos;
@@ -32,6 +32,21 @@ public class GrappleModifierBlockEntity extends BlockEntity {
 			this.level.sendBlockUpdated(worldPosition, state, state, 3);
 			this.setChanged();
 		}
+	}
+
+	public boolean sendOpenUIPacket() {
+		if(this.level == null)
+			throw new IllegalStateException(
+					"Attempted to open UI on block entity without world @ %s"
+							.formatted(this.getBlockPos())
+			);
+
+		if(this.level.isClientSide)
+			return false;
+
+		// Send fabric message
+
+		return true;
 	}
 
 	public void unlockCategory(CustomizationCategory category) {

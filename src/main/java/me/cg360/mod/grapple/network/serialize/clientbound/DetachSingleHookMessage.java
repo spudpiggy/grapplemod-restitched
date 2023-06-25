@@ -1,8 +1,9 @@
-package me.cg360.mod.grapple.network.clientbound;
+package me.cg360.mod.grapple.network.serialize.clientbound;
 
 import me.cg360.mod.grapple.GrappleMod;
 import com.yyon.grapplinghook.client.ClientPhysicsContextTracker;
 import me.cg360.mod.grapple.network.NetworkContext;
+import me.cg360.mod.grapple.network.serialize.SerializablePacket;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.network.FriendlyByteBuf;
@@ -25,7 +26,7 @@ import net.minecraft.resources.ResourceLocation;
     along with GrappleMod.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-public class DetachSingleHookMessage extends BaseMessageClient {
+public class DetachSingleHookMessage extends SerializablePacket {
    
 	public int id;
 	public int hookid;

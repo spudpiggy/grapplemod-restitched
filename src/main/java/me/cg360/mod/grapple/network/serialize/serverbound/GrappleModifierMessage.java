@@ -1,9 +1,10 @@
-package me.cg360.mod.grapple.network.serverbound;
+package me.cg360.mod.grapple.network.serialize.serverbound;
 
 import me.cg360.mod.grapple.GrappleMod;
 import me.cg360.mod.grapple.content.blockentity.GrappleModifierBlockEntity;
 import me.cg360.mod.grapple.network.NetworkContext;
 import me.cg360.mod.grapple.customization.CustomizationVolume;
+import me.cg360.mod.grapple.network.serialize.SerializablePacket;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.resources.ResourceLocation;
@@ -20,7 +21,7 @@ import net.minecraft.world.level.block.entity.BlockEntity;
     along with GrappleMod.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-public class GrappleModifierMessage extends BaseMessageServer {
+public class GrappleModifierMessage extends SerializablePacket {
    
 	public BlockPos pos;
 	public CustomizationVolume custom;

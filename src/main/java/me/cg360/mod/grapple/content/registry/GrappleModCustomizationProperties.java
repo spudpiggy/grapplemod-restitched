@@ -1,8 +1,6 @@
 package me.cg360.mod.grapple.content.registry;
 
 import me.cg360.mod.grapple.GrappleMod;
-import com.yyon.grapplinghook.customization.type.*;
-import me.cg360.grapplinghook.customization.type.*;
 import me.cg360.mod.grapple.customization.type.*;
 import net.minecraft.core.Registry;
 import net.minecraft.resources.ResourceLocation;

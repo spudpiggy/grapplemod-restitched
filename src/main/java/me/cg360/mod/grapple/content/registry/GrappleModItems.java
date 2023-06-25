@@ -1,14 +1,12 @@
 package me.cg360.mod.grapple.content.registry;
 
 import me.cg360.mod.grapple.GrappleMod;
-import me.cg360.grapplinghook.content.item.upgrade.*;
 import me.cg360.mod.grapple.content.item.upgrade.*;
 import me.cg360.mod.grapple.customization.template.GrapplingHookTemplate;
 import me.cg360.mod.grapple.content.item.EnderStaffItem;
 import me.cg360.mod.grapple.content.item.ForcefieldItem;
 import me.cg360.mod.grapple.content.item.GrapplehookItem;
 import me.cg360.mod.grapple.content.item.LongFallBootsItem;
-import com.yyon.grapplinghook.content.item.upgrade.*;
 import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroup;
 import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;

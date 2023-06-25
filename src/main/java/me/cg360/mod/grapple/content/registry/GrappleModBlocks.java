@@ -1,7 +1,7 @@
 package me.cg360.mod.grapple.content.registry;
 
 import me.cg360.mod.grapple.GrappleMod;
-import me.cg360.mod.grapple.content.block.modifierblock.GrappleModifierBlock;
+import me.cg360.mod.grapple.content.block.GrappleModifierBlock;
 import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.ResourceLocation;

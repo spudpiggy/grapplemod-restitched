@@ -1,17 +1,17 @@
-package me.cg360.mod.grapple.network.clientbound;
+package me.cg360.mod.grapple.network.serialize.clientbound;
 
 import me.cg360.mod.grapple.GrappleMod;
 import me.cg360.mod.grapple.content.entity.grapplinghook.IExtendedSpawnPacketEntity;
 import me.cg360.mod.grapple.network.NetworkContext;
 import io.netty.buffer.Unpooled;
+import me.cg360.mod.grapple.network.serialize.SerializablePacket;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
-import net.minecraft.client.Minecraft;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.Entity;
 
-public class AddExtraDataMessage extends BaseMessageClient {
+public class AddExtraDataMessage extends SerializablePacket {
 
     private Entity entity;
 

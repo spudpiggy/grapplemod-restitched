@@ -2,7 +2,7 @@ package me.cg360.mod.grapple.mixin;
 
 import me.cg360.mod.grapple.content.entity.grapplinghook.IExtendedSpawnPacketEntity;
 import me.cg360.mod.grapple.network.NetworkManager;
-import me.cg360.mod.grapple.network.clientbound.AddExtraDataMessage;
+import me.cg360.mod.grapple.network.serialize.clientbound.AddExtraDataMessage;
 import net.minecraft.server.level.ServerEntity;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.Entity;

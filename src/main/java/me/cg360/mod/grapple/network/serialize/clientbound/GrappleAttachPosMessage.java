@@ -1,12 +1,16 @@
-package me.cg360.mod.grapple.network.clientbound;
+package me.cg360.mod.grapple.network.serialize.clientbound;
 
 import me.cg360.mod.grapple.GrappleMod;
-import com.yyon.grapplinghook.client.ClientPhysicsContextTracker;
+import me.cg360.mod.grapple.content.entity.grapplinghook.GrapplinghookEntity;
 import me.cg360.mod.grapple.network.NetworkContext;
+import me.cg360.mod.grapple.network.serialize.SerializablePacket;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
+import net.minecraft.client.Minecraft;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.level.Level;
+
 
 /*
  * This file is part of GrappleMod.
@@ -25,36 +29,57 @@ import net.minecraft.resources.ResourceLocation;
     along with GrappleMod.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-public class GrappleDetachMessage extends BaseMessageClient {
+public class GrappleAttachPosMessage extends SerializablePacket {
    
 	public int id;
+	public double x;
+	public double y;
+	public double z;
 
-    public GrappleDetachMessage(FriendlyByteBuf buf) {
+    public GrappleAttachPosMessage(FriendlyByteBuf buf) {
     	super(buf);
     }
 
-    public GrappleDetachMessage(int id) {
+    public GrappleAttachPosMessage(int id, double x, double y, double z) {
     	this.id = id;
+        this.x = x;
+        this.y = y;
+        this.z = z;
     }
 
     @Override
     public void decode(FriendlyByteBuf buf) {
     	this.id = buf.readInt();
+        this.x = buf.readDouble();
+        this.y = buf.readDouble();
+        this.z = buf.readDouble();
     }
 
     @Override
     public void encode(FriendlyByteBuf buf) {
     	buf.writeInt(this.id);
+        buf.writeDouble(this.x);
+        buf.writeDouble(this.y);
+        buf.writeDouble(this.z);
     }
 
     @Override
     public ResourceLocation getChannel() {
-        return GrappleMod.id("grapple_detach");
+        return GrappleMod.id("grapple_attach_pos");
     }
 
     @Environment(EnvType.CLIENT)
     @Override
     public void processMessage(NetworkContext ctx) {
-    	ClientPhysicsContextTracker.receiveGrappleDetach(this.id);
+    	Level world = Minecraft.getInstance().level;
+
+        if(world == null) {
+            GrappleMod.LOGGER.warn("Network Message received in invalid context (World not present | GrappleAttachPos)");
+            return;
+        }
+
+    	if (world.getEntity(this.id) instanceof GrapplinghookEntity grapple) {
+        	grapple.setAttachPos(this.x, this.y, this.z);
+        }
     }
 }

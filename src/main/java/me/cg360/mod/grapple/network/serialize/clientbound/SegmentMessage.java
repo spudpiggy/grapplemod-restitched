@@ -1,9 +1,10 @@
-package me.cg360.mod.grapple.network.clientbound;
+package me.cg360.mod.grapple.network.serialize.clientbound;
 
 import me.cg360.mod.grapple.GrappleMod;
 import me.cg360.mod.grapple.content.entity.grapplinghook.GrapplinghookEntity;
 import me.cg360.mod.grapple.content.entity.grapplinghook.RopeSegmentHandler;
 import me.cg360.mod.grapple.network.NetworkContext;
+import me.cg360.mod.grapple.network.serialize.SerializablePacket;
 import me.cg360.mod.grapple.util.Vec;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
@@ -31,7 +32,7 @@ import net.minecraft.world.level.Level;
     along with GrappleMod.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-public class SegmentMessage extends BaseMessageClient {
+public class SegmentMessage extends SerializablePacket {
    
 	private int id;
 	private boolean add;

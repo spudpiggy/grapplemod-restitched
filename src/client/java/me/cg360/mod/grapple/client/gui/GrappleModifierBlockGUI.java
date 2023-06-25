@@ -1,6 +1,5 @@
 package me.cg360.mod.grapple.client.gui;
 
-import me.cg360.grapplemod.client.gui.widget.*;
 import me.cg360.mod.grapple.client.gui.widget.BackgroundWidget;
 import me.cg360.mod.grapple.client.gui.widget.CustomTooltipHandler;
 import me.cg360.mod.grapple.client.gui.widget.CustomizationCheckbox;

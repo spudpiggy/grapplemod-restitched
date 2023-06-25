@@ -1,8 +1,9 @@
-package me.cg360.mod.grapple.network.clientbound;
+package me.cg360.mod.grapple.network.serialize.clientbound;
 
 import me.cg360.mod.grapple.GrappleMod;
 import me.cg360.mod.grapple.config.GrappleModLegacyConfig;
 import me.cg360.mod.grapple.network.NetworkContext;
+import me.cg360.mod.grapple.network.serialize.SerializablePacket;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.resources.ResourceLocation;
 
@@ -29,7 +30,7 @@ import java.util.Comparator;
     along with GrappleMod.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-public class LoggedInMessage extends BaseMessageClient {
+public class LoggedInMessage extends SerializablePacket {
     GrappleModLegacyConfig.Config conf;
 
     public LoggedInMessage(FriendlyByteBuf buf) {
